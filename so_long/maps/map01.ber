@@ -1,9 +1,0 @@
-# Map accept comments after '#'
-# Map read ignore spaces and consecultive breaklines
-# use 'h' 'H' 'V' 'v' for enemies(horizontal/vertical - both start direction)
-
-111111111
-1E000v001
-1H00C00h1
-100V000P1
-111111111
