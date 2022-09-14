@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   free_mem.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhenriqu <hhenriqu@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/15 14:05:56 by hhenriqu          #+#    #+#             */
-/*   Updated: 2022/09/12 16:38:48 by hhenriqu         ###   ########.fr       */
+/*   Created: 2022/09/12 21:21:41 by hhenriqu          #+#    #+#             */
+/*   Updated: 2022/09/12 21:26:34 by hhenriqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-#define GET_NEXT_LINE_H
-#include	<unistd.h> 
-#include	<stdlib.h>
+#include "so_long.h"
 
-char	*get_next_line(int fd);
-char	*ft_read(int fd, char *str, char *aux, char *buf);
-char	*ft_getrest(char *str);
-char	*ft_getline(char *str);
-int		ft_newline(char *str);
-size_t	ft_strlen(const char *s);
-char	*ft_calloc(int size);
+void	free_map(t_data *data)
+{
+	size_t	i;
 
-#endif
+	i = -1;
+	while (data->map[++i])
+	{
+		free(data->map[i]);
+	}
+	free(data->map);
+	data->map = NULL;
+}
+
+void	destroy_window(t_data *data)
+{
+	mlx_destroy_window(data->mlx, data->win);
+	data->win = NULL;
+}
